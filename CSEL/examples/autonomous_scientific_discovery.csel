@@ -1,0 +1,39 @@
+ENTITY AutonomousScientificDiscovery {
+
+    TYPE:
+        OperationalConcept
+
+    IDENTITY:
+        cse://example/autonomous_scientific_discovery
+
+    CONSTRAINTS:
+        requires cse://concept/std.observation
+        requires cse://concept/std.evidence
+
+    TRANSFORMATION:
+        // Ingestion phase
+        Signal(ObservationBatch) + Context(ExperimentalSetup) => Observation(CleanObservations)
+
+        // Hypothesizing & Discovery
+        Observation(CleanObservations) + Context(TheoreticalFramework) => Belief(HypothesisA)
+        Observation(CleanObservations) + Context(TheoreticalFramework) => Belief(HypothesisB)
+
+        // Experiment planning
+        Belief(HypothesisA) + Experiment(CrucialExperiment) => Evidence(ExpEvidenceA)
+        Belief(HypothesisB) + Experiment(CrucialExperiment) => Evidence(ExpEvidenceB)
+
+        // Arbitration & Decision
+        ResolveContradiction(HypothesisA, HypothesisB) => Knowledge(CurrentBestTheory)
+
+    INVARIANT:
+        // Discovery Score: DS = (Novelty * Accuracy * Evidence) / (Energy * Contradiction)
+        // Evolution Score: ES = KnowledgeGrowth / ComplexityIncrease
+        DiscoveryScore >= 0.80
+        EvolutionScore >= 1.00
+
+    CONFIDENCE:
+        0.98
+
+    LINEAGE:
+        derived_from cse://concept/std.decision
+}

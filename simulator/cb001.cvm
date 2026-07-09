@@ -1,0 +1,9 @@
+// --- CB-001 Benchmark Program ---
+LOAD_CONTEXT CR0, cse://context/cb001_sensor_calibration
+LOAD_SIGNAL CR2, cse://signal/boiling_temp_signal
+OBSERVE CR1, cse://signal/boiling_temp_signal
+LOAD_BELIEF CR1, cse://belief/water_is_boiling_state
+VERIFY_EVIDENCE CR2, CR1, CR2
+COLLAPSE_DECISION CR3, CR1, CR2
+COMMIT_STATE CR3
+HALT_REASON benchmark_cycle_resolved

@@ -1,0 +1,9 @@
+// --- CB-002 Hypotheses Evolution Program ---
+LOAD_CONTEXT CR0, cse://context/cb002_anomaly_loop
+LOAD_SIGNAL CR2, cse://signal/anomaly_sensor
+OBSERVE CR1, cse://signal/anomaly_sensor
+LOAD_BELIEF CR1, cse://belief/theory_newton
+LOAD_BELIEF CR3, cse://belief/theory_einstein
+RESOLVE_CONTRADICTION CR3, CR1, CR3
+COMMIT_STATE CR3
+HALT_REASON contradiction_resolved

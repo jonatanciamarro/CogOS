@@ -1,0 +1,24 @@
+ENTITY Knowledge {
+
+    TYPE:
+        AbstractConcept
+
+    IDENTITY:
+        cse://concept/std.knowledge
+
+    CONSTRAINTS:
+        requires cse://concept/std.belief
+        requires cse://concept/std.evidence
+
+    TRANSFORMATION:
+        Belief + Evidence => Knowledge
+
+    INVARIANT:
+        KnowledgeWithoutEvidence = INVALID
+
+    CONFIDENCE:
+        0.70
+
+    LINEAGE:
+        derived_from cse://invariant/traceability
+}

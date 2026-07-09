@@ -1,0 +1,20 @@
+ENTITY Belief {
+
+    TYPE:
+        AbstractConcept
+
+    IDENTITY:
+        cse://concept/std.belief
+
+    CONSTRAINTS:
+        requires cse://concept/std.observation
+
+    TRANSFORMATION:
+        Observation + Context => Belief
+
+    CONFIDENCE:
+        0.30
+
+    LINEAGE:
+        derived_from cse://invariant/uncertainty
+}

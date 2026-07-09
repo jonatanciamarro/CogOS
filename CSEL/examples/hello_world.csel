@@ -1,0 +1,36 @@
+ENTITY HelloWorldCognition {
+
+    TYPE:
+        OperationalConcept
+
+    IDENTITY:
+        cse://example/hello_world
+
+    CONSTRAINTS:
+        requires cse://concept/std.observation
+        requires cse://concept/std.evidence
+        requires cse://concept/std.knowledge
+        requires cse://concept/std.decision
+
+    TRANSFORMATION:
+        Signal(TempSignal) + Context(Calibration) + Observer(SensorNode) 
+            => Observation(TempObs)
+
+        Observation(TempObs) + Context(BoilingPointLimit) 
+            => Belief(BoilingStateBelief)
+
+        Belief(BoilingStateBelief) + Experiment(RunHeatTest) 
+            => Evidence(BoilingEvidence)
+
+        Belief(BoilingStateBelief) + Evidence(BoilingEvidence) 
+            => Knowledge(WaterIsBoiling)
+
+        Knowledge(WaterIsBoiling) + Invariant(SystemSafetyLimit) 
+            => Decision(ShutOffHeater)
+
+    CONFIDENCE:
+        0.95
+
+    LINEAGE:
+        derived_from cse://concept/std.decision
+}

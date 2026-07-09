@@ -1,0 +1,24 @@
+ENTITY Observation {
+
+    TYPE:
+        AbstractConcept
+
+    IDENTITY:
+        cse://concept/std.observation
+
+    CONSTRAINTS:
+        requires cse://concept/std.signal
+        requires cse://concept/std.observer
+
+    TRANSFORMATION:
+        Signal + Context + Observer => Observation
+
+    INVARIANT:
+        ObservationWithoutObserver = INVALID
+
+    CONFIDENCE:
+        1.00
+
+    LINEAGE:
+        derived_from cse://invariant/identity
+}

@@ -1,0 +1,8 @@
+// --- Genesis Program CVM Execution ---
+LOAD_CONTEXT CR0, cse://context/genesis
+LOAD_SIGNAL CR2, cse://signal/sky_color_signal
+OBSERVE CR1, cse://signal/sky_color_signal
+STORE CR1, semantic
+VERIFY_EVIDENCE CR2, CR1, CR2
+COMMIT_STATE CR1
+HALT_REASON genesis_verification_complete
