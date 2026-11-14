@@ -7,8 +7,7 @@ Humanity developed artificial intelligence for reasoning.
 We still lack an operating discipline for organizational cognition.
 CogOS is an attempt to establish that discipline.
 
-This repository is not software.
-It is the first draft of Cognitive Systems Engineering as a scientific field.
+CogOS is a formal architectural blueprint and reference specification for Cognitive Systems Engineering (CSE), defining epistemic compiler pipelines, intermediate knowledge representation (KIR), and multi-agent execution state machines.
 
 ---
 
